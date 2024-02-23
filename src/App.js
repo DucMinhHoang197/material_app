@@ -1,10 +1,15 @@
 import React from "react";
-import { Button } from "@mui/material";
+import docs from "./docs.json";
+import SearchAppBar from "./component/SearchAppBar";
+import JobCard from "./component/JobCard";
+
 function App() {
   return (
     <div>
-      <h1>material</h1>
-      <Button>click</Button>
+      <SearchAppBar />
+      {docs.slice(0, 4).map((doc, i) => (
+        <JobCard doc={doc} key={i} />
+      ))}
     </div>
   );
 }
