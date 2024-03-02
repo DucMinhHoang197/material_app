@@ -13,7 +13,7 @@ function JobCard({ doc }) {
         borderRadius: "5px",
         padding: 5,
         flex: 1,
-        bgcolor: "gray",
+        bgcolor: "#353535",
       }}
     >
       <Box>
@@ -32,7 +32,7 @@ function JobCard({ doc }) {
               label={skill}
               key={i}
               sx={{
-                bgcolor: "#E74C3C",
+                bgcolor: "#D74742",
                 mt: "4px",
                 ml: i > 0 ? "6px" : "0px",
                 color: "white",
@@ -47,7 +47,7 @@ function JobCard({ doc }) {
         </Box>
       </Box>
       <Box mt="16px" sx={{ textAlign: "center" }}>
-        <ButtonLearnMore />
+        <ButtonLearnMore doc={doc} />
       </Box>
     </Box>
   );
