@@ -10,18 +10,14 @@ import { useLogStore } from "../store";
 export default function ButtonLearnMore({ doc }) {
   const [open, setOpen] = useState(false);
   const { isLogged } = useLogStore();
-  let isLogged2 = "";
+
   useEffect(() => {
     localStorage.setItem("isLogged", JSON.stringify(isLogged));
   }, [isLogged]);
-  useEffect(() => {
-    localStorage.setItem("isLogged2", JSON.stringify(isLogged2));
-  }, [isLogged2]);
 
   const handleOpen = () => {
     if (isLogged) {
       setOpen(true);
-      isLogged2 = "true";
     } else {
       window.location.href = "/login";
     }
