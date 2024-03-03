@@ -6,29 +6,28 @@ import Dialog from "@mui/material/Dialog";
 import { useState, useEffect } from "react";
 import { Chip, DialogContent, Typography } from "@mui/material";
 import { useLogStore } from "../store";
+
 export default function ButtonLearnMore({ doc }) {
   const [open, setOpen] = useState(false);
+  const { isLogged } = useLogStore();
+  let isLogged2 = "";
+  useEffect(() => {
+    localStorage.setItem("isLogged", JSON.stringify(isLogged));
+  }, [isLogged]);
+  useEffect(() => {
+    localStorage.setItem("isLogged2", JSON.stringify(isLogged2));
+  }, [isLogged2]);
 
   const handleOpen = () => {
     if (isLogged) {
       setOpen(true);
+      isLogged2 = "true";
     } else {
       window.location.href = "/login";
     }
   };
   const handleClose = () => setOpen(false);
-  const { isLogged } = useLogStore();
-  // const [saveIsLogged, setSaveIsLogged] = useState(isLogged);
-  // useEffect(() => {
-  //   const saveIsLogged = JSON.parse(localStorage.getItem("isLogged"));
-  //   if (saveIsLogged) {
-  //     setSaveIsLogged(saveIsLogged);
-  //   }
-  // }, [setSaveIsLogged]);
 
-  useEffect(() => {
-    localStorage.setItem("isLogged", JSON.stringify(isLogged));
-  }, [isLogged]);
   return (
     <>
       <Button
