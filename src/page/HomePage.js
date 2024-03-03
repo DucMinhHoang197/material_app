@@ -3,7 +3,6 @@ import docs from "../docs.json";
 import SearchAppBar from "../component/SearchAppBar";
 import JobCard from "../component/JobCard";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useLogStore } from "../store";
 function HomePage() {
   return (
     <div style={{ backgroundColor: "##121212", minHeight: "100vh" }}>
