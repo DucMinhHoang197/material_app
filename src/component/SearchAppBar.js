@@ -54,10 +54,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
-  const { isLogged } = useLogStore();
+  const { isLogged, setLogOut, setLogIn } = useLogStore();
   const navigate = useNavigate();
-  const handleClickLog = () => {
+
+  const handleClickLogIn = () => {
+    setLogIn();
     navigate("/login");
+  };
+
+  const handleClickLogOut = () => {
+    setLogOut();
+    navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -92,13 +100,23 @@ export default function SearchAppBar() {
             </Box>
           </Box>
           <Box sx={{}}>
-            <Button
-              onClick={handleClickLog}
-              variant="contained"
-              startIcon={isLogged ? <LogoutSharpIcon /> : <LoginSharpIcon />}
-            >
-              {isLogged ? "Logout" : "Login"}
-            </Button>
+            {isLogged ? (
+              <Button
+                onClick={handleClickLogOut}
+                variant="contained"
+                startIcon={<LogoutSharpIcon />}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                onClick={handleClickLogIn}
+                variant="contained"
+                startIcon={<LoginSharpIcon />}
+              >
+                Login
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

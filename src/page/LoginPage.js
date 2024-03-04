@@ -38,15 +38,15 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const { setLogin } = useLogStore();
+  const { setLogIn } = useLogStore();
 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
     if (username === "ducminh" && password === "123456789") {
+      setLogIn();
       navigate("/");
-      setLogin();
     }
   };
   const onChangeEmail = (e) => {

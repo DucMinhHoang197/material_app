@@ -22,6 +22,7 @@ export default function ButtonLearnMore({ doc }) {
       window.location.href = "/login";
     }
   };
+
   const handleClose = () => setOpen(false);
 
   return (
@@ -33,7 +34,7 @@ export default function ButtonLearnMore({ doc }) {
       >
         Learn More
       </Button>
-      {isLogged ? (
+      {isLogged && (
         <Dialog open={open} onClose={handleClose} fullWidth>
           <DialogTitle>{doc.title}</DialogTitle>
           <Box mt="16px" sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -56,7 +57,7 @@ export default function ButtonLearnMore({ doc }) {
             </Typography>
           </DialogContent>
         </Dialog>
-      ) : null}
+      )}
     </>
   );
 }
