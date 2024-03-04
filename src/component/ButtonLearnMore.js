@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Chip, DialogContent, Typography } from "@mui/material";
 import { useLogStore } from "../store";
@@ -10,6 +11,7 @@ import { useLogStore } from "../store";
 export default function ButtonLearnMore({ doc }) {
   const [open, setOpen] = useState(false);
   const { isLogged } = useLogStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("isLogged", JSON.stringify(isLogged));
@@ -19,7 +21,7 @@ export default function ButtonLearnMore({ doc }) {
     if (isLogged) {
       setOpen(true);
     } else {
-      window.location.href = "/login";
+      navigate("/login");
     }
   };
 
